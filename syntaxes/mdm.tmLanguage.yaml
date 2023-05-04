@@ -1,0 +1,93 @@
+$schema: https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json
+filetypes: [mdm]
+name: ModMark
+patterns:
+- {include: '#heading'}
+- {include: '#escape_char'}
+- {include: '#tags'}
+- {include: '#module'}
+repository:
+  heading:
+    match: '(?:^)#+.*$'
+    name: markup.heading.modmark
+  escape_char:
+    match: '\\.'
+    name: constant.character.escape.modmark
+  tags:
+    patterns:
+    - {include: '#bold'}
+    - {include: '#italic'}
+    - {include: '#subscript'}
+    - {include: '#superscript'}
+    - {include: '#verbatim'}
+    - {include: '#underline'}
+    - {include: '#strikethrough'}
+    - {include: '#math'}
+  bold:
+    begin: '\*\*'
+    end: '\*\*'
+    name: 'markup.bold.modmark'
+    captures:
+      0: {name: 'punctuation.definition.bold.modmark'}
+    patterns:
+    - {include: '#tags'}
+  italic:
+    begin: '\/\/'
+    end: '\/\/'
+    name: 'markup.italic.modmark'
+    captures:
+      0: {name: 'punctuation.definition.italic.modmark'}
+    patterns:
+    - {include: '#tags'}
+  subscript:
+    begin: '__'
+    end: '__'
+    name: 'markup.other.subscript.modmark'
+    captures:
+      0: {name: 'punctuation.definition.subscript.modmark'}
+    patterns:
+    - {include: '#tags'}
+  superscript:
+    begin: '\^\^'
+    end: '\^\^'
+    name: 'markup.other.superscript.modmark'
+    captures:
+      0: {name: 'punctuation.definition.superscript.modmark'}
+    patterns:
+    - {include: '#tags'}
+  verbatim:
+    begin: '``'
+    end: '``'
+    name: 'markup.raw.modmark'
+    captures:
+      0: {name: 'punctuation.definition.raw.modmark'}
+  underline:
+    begin: '=='
+    end: '=='
+    name: 'markup.underline.modmark'
+    captures:
+      0: {name: 'punctuation.definition.underline.modmark'}
+    patterns:
+    - {include: '#tags'}
+  strikethrough:
+    begin: '~~'
+    end: '~~'
+    name: 'markup.other.strikethrough.modmark'
+    captures:
+      0: {name: 'punctuation.definition.strikethrough.modmark'}
+    patterns:
+    - {include: '#tags'}
+  math:
+    begin: '\$\$'
+    end: '\$\$'
+    name: 'markup.other.math.modmark'
+    captures:
+      0: {name: 'punctuation.definition.math.modmark'}
+  module:
+    begin: '(?:^|[^\\])\['
+    end: '(^|[^\\])\]([^a-z0-9])'
+    contentName: 'markup.bold.module.modmark'
+    endCaptures:
+      1: {name: 'markup.bold.module.modmark'}
+
+scopeName: source.mdm

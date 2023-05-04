@@ -1,0 +1,37 @@
+{
+  "name": "modmark-syntax-highlighting",
+  "displayName": "ModMark Syntax Highlighting",
+  "description": "Adds syntax highlighting for ModMark (https://github.com/modmark-org/modmark)",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.77.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "mdm",
+        "aliases": [
+          "ModMark",
+          "mdm"
+        ],
+        "extensions": [
+          ".mdm"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "mdm",
+        "scopeName": "source.mdm",
+        "path": "./syntaxes/mdm.tmLanguage.json"
+      }
+    ]
+  },
+  "devDependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}
